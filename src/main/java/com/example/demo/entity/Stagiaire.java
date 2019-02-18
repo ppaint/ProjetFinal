@@ -50,6 +50,9 @@ public class Stagiaire {
 			@AttributeOverride(name = "ville", column = @Column(name = "city", length = 150)) })
 	private Adresse adresse;
 	
+	@Autowired
+	@OneToOne
+	private Ordinateur ordinateur;
 	
 	@Autowired
 	@OneToOne
@@ -121,6 +124,14 @@ public class Stagiaire {
 		this.adresse = adresse;
 	}
 
+
+	public Ordinateur getOrdinateur() {
+		return ordinateur;
+	}
+
+	public void setOrdinateur(Ordinateur ordinateur) {
+		this.ordinateur = ordinateur;
+	}
 
 	public Login getLogin() {
 		return login;

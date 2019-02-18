@@ -1,12 +1,15 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
-@Entity(name="Module")
+@Entity
 public class Module {
 	
 	// ------------------ Attributs --------------------------- //
@@ -22,8 +25,10 @@ public class Module {
 	
 	private String contenu;
 	
+	@ManyToMany(mappedBy="modules")
+	private Set<Matiere> matieres;
+	
 	@ManyToOne
-	@JoinColumn(name = "former_id")
 	private Formateur formateur;
 	
 	@Version
@@ -105,6 +110,18 @@ public class Module {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	
+
+
+	public Set<Matiere> getMatieres() {
+		return matieres;
+	}
+
+
+	public void setMatieres(Set<Matiere> matieres) {
+		this.matieres = matieres;
 	}
 
 

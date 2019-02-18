@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,9 +19,9 @@ public class Matiere {
 
 	// associations
 
-	@ManyToMany(targetEntity="Module")
-	@JoinTable(name="modules_matieres", joinColumns= {@JoinColumn(name="", referencedColumnName="")}, inverseJoinColumns= {@JoinColumn(name="",referencedColumnName="")})
-	private ArrayList<Module> modules;
+	@ManyToMany
+	@JoinTable(name="modules_matieres", joinColumns= {@JoinColumn(name="titre")}, inverseJoinColumns= {@JoinColumn(name="nomMatiere")})
+	private Set<Module> modules;
 
 	public Matiere() {
 		super();
@@ -34,11 +35,11 @@ public class Matiere {
 		this.nomMatiere = nomMatiere;
 	}
 
-	public ArrayList<Module> getModules() {
+	public Set<Module> getModules() {
 		return modules;
 	}
 
-	public void setModules(ArrayList<Module> modules) {
+	public void setModules(Set<Module> modules) {
 		this.modules = modules;
 	}
 

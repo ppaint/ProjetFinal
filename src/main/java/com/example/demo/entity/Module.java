@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
 @Entity(name="Module")
@@ -19,6 +21,10 @@ public class Module {
 	private String prerequis;
 	
 	private String contenu;
+	
+	@ManyToOne
+	@JoinColumn(name = "former_id")
+	private Formateur formateur;
 	
 	@Version
 	private int version;

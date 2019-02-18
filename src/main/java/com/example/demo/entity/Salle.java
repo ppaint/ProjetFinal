@@ -15,11 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "salle")
-@SequenceGenerator(name = "seqSalle", sequenceName = "seq_salle", allocationSize = 1, initialValue = 100)
 public class Salle {
 	// Attributs généraux
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqSalle")
 	@Column(name = "salle_code")
 	private String code;
 
@@ -42,6 +40,11 @@ public class Salle {
 	public Long getCout() {
 		return cout;
 	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 
 	public void setCout(Long cout) {
 		this.cout = cout;

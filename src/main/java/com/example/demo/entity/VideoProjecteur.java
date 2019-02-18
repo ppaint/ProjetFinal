@@ -16,12 +16,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "videoprojecteur")
-@SequenceGenerator(name = "seqVideoproj", sequenceName = "seq_videoproj", allocationSize = 1, initialValue = 100)
 public class VideoProjecteur {
 
 	// Attributs généraux
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVideoproj")
 	@Column(name = "videoproj_code")
 	private String code;
 
@@ -48,6 +46,10 @@ public class VideoProjecteur {
 	}
 
 	
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public Long getCout() {
 		return cout;
 	}

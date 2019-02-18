@@ -12,12 +12,18 @@ import com.example.demo.entity.Adresse;
 import com.example.demo.entity.Coordonnees;
 import com.example.demo.entity.Formateur;
 import com.example.demo.entity.Gestionnaire;
+import com.example.demo.entity.Ordinateur;
+import com.example.demo.entity.Salle;
 import com.example.demo.entity.Stagiaire;
 import com.example.demo.entity.Technicien;
+import com.example.demo.entity.VideoProjecteur;
 import com.example.demo.repository.FormateurRepository;
 import com.example.demo.repository.GestionnaireRepository;
+import com.example.demo.repository.OrdinateurRepository;
+import com.example.demo.repository.SalleRepository;
 import com.example.demo.repository.StagiaireRepository;
 import com.example.demo.repository.TechnicienRepository;
+import com.example.demo.repository.VideoProjecteurRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,6 +37,12 @@ public class ProjetFinalApplicationTests {
 	private GestionnaireRepository gestionnaireRepository;
 	@Autowired
 	private TechnicienRepository technicienRepository;
+	@Autowired
+	private SalleRepository salleRepository;
+	@Autowired
+	private OrdinateurRepository ordinateurRepository;
+	@Autowired
+	private VideoProjecteurRepository videoProjecteurRepository;
 
 	@Test
 	public void contextLoads() {
@@ -68,6 +80,36 @@ public class ProjetFinalApplicationTests {
 		gestionnaireRepository.delete(f);
 	}
 	
+	@Test
+	public void listOrdinateur() {
+		Ordinateur f = new Ordinateur();
+		f.setCout((long)28.5);
+		f.setAnnee(2005);
+		f.setRam(32);
+		f.setCode("Azdaz85sfea6");
+		ordinateurRepository.save(f);
+		assertNotNull(ordinateurRepository.findAll());
+		ordinateurRepository.delete(f);
+	}
 	
+	@Test
+	public void listSalle() {
+		Salle f = new Salle();
+		f.setCout((long)28.5);
+		f.setCode("Azdaz85sfea6");
+		salleRepository.save(f);
+		assertNotNull(salleRepository.findAll());
+		salleRepository.delete(f);
+	}
+	
+	@Test
+	public void listVideoProjecteur() {
+		VideoProjecteur f = new VideoProjecteur();
+		f.setCout((long)28.5);
+		f.setCode("Azdaz85sfea6");
+		videoProjecteurRepository.save(f);
+		assertNotNull(videoProjecteurRepository.findAll());
+		videoProjecteurRepository.delete(f);
+	}
 
 }

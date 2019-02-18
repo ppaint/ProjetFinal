@@ -17,6 +17,10 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFormation")
 	@Column(name = "formation_number")
 	private Long id;
+
+	public Formation() {
+		super();
+	}
 	
 	
 

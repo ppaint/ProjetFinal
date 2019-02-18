@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.demo.entity.Adresse;
 import com.example.demo.entity.Coordonnees;
 import com.example.demo.entity.Formateur;
+import com.example.demo.entity.Formation;
 import com.example.demo.entity.Gestionnaire;
 import com.example.demo.entity.Ordinateur;
 import com.example.demo.entity.Salle;
@@ -18,6 +19,7 @@ import com.example.demo.entity.Stagiaire;
 import com.example.demo.entity.Technicien;
 import com.example.demo.entity.VideoProjecteur;
 import com.example.demo.repository.FormateurRepository;
+import com.example.demo.repository.FormationRepository;
 import com.example.demo.repository.GestionnaireRepository;
 import com.example.demo.repository.OrdinateurRepository;
 import com.example.demo.repository.SalleRepository;
@@ -43,7 +45,11 @@ public class ProjetFinalApplicationTests {
 	private OrdinateurRepository ordinateurRepository;
 	@Autowired
 	private VideoProjecteurRepository videoProjecteurRepository;
+	@Autowired
+	private FormationRepository formationRepository;
 
+	
+	
 	@Test
 	public void contextLoads() {
 	}
@@ -111,5 +117,12 @@ public class ProjetFinalApplicationTests {
 		assertNotNull(videoProjecteurRepository.findAll());
 		videoProjecteurRepository.delete(f);
 	}
-
+	
+	@Test
+	public void listFormation() {
+		Formation f = new Formation();
+		formationRepository.save(f);
+		assertNotNull(formationRepository.findAll());
+		formationRepository.delete(f);
+	}
 }

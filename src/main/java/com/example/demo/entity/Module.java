@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
-@Entity
+@Entity(name="Module")
 public class Module {
 	
 	// ------------------ Attributs --------------------------- //

@@ -1,25 +1,51 @@
 package com.example.demo.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "formation")
-@SequenceGenerator(name = "seqFormation", sequenceName = "seq_formation", allocationSize = 1, initialValue = 100)
 public class Formation {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFormation")
-	@Column(name = "formation_number")
-	private Long id;
-
+	@Column(name = "formation_id")
+	private String id;
+	
+	//Associations
+	@ManyToMany
+	@JoinTable(name="modules_formation", joinColumns= {@JoinColumn(name="titre")}, inverseJoinColumns= {@JoinColumn(name="id")})
+	private Set<Module> modules;
+	
+	
 	public Formation() {
 		super();
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public Set<Module> getModules() {
+		return modules;
+	}
+
+
+	public void setModules(Set<Module> modules) {
+		this.modules = modules;
 	}
 	
 	

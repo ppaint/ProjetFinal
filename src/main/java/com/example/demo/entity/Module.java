@@ -28,6 +28,9 @@ public class Module {
 	@ManyToMany(mappedBy="modules")
 	private Set<Matiere> matieres;
 	
+	@ManyToMany(mappedBy="modules")
+	private Set<Formation> formations;
+	
 	@ManyToOne
 	private Formateur formateur;
 	
@@ -55,6 +58,16 @@ public class Module {
 
 	public String getTitre() {
 		return titre;
+	}
+
+
+	public Set<Formation> getFormations() {
+		return formations;
+	}
+
+
+	public void setFormations(Set<Formation> formations) {
+		this.formations = formations;
 	}
 
 
@@ -112,9 +125,6 @@ public class Module {
 		this.version = version;
 	}
 	
-	
-
-
 	public Set<Matiere> getMatieres() {
 		return matieres;
 	}
@@ -122,6 +132,16 @@ public class Module {
 
 	public void setMatieres(Set<Matiere> matieres) {
 		this.matieres = matieres;
+	}
+	
+
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
 	}
 
 

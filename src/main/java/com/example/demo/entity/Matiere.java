@@ -30,7 +30,7 @@ public class Matiere {
 	public String getNomMatiere() {
 		return nomMatiere;
 	}
-
+	
 	public void setNomMatiere(String nomMatiere) {
 		this.nomMatiere = nomMatiere;
 	}

@@ -18,14 +18,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 @Table(name = "formateur")
 @SequenceGenerator(name = "seqFormateur", sequenceName = "seq_formateur", allocationSize = 1, initialValue = 100)
-public abstract class Formateur {
+public class Formateur {
 	
 	// ------------------ Attributs --------------------------- //
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFormateur")
 	@Column(name = "formateur_number")
-	private Long id;
+	private Integer id;
 	
 	
 	@Column(name = "first_name", length = 150, nullable = false)
@@ -76,12 +76,12 @@ public abstract class Formateur {
 
 	// ------------------ Methodes --------------------------- //
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -2,15 +2,11 @@ package com.example.demo.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +26,9 @@ public class Salle {
 	//Liens et associations avec autres entités
 	@OneToOne
 	private VideoProjecteur videoProjecteur;
+	
+	@OneToOne(mappedBy = "salle")
+	private Module module;
 	
 	
 	public String getCode() {
@@ -64,6 +63,16 @@ public class Salle {
 
 	public void setVideoProjecteur(VideoProjecteur videoProjecteur) {
 		this.videoProjecteur = videoProjecteur;
+	}
+
+
+	public Module getModule() {
+		return module;
+	}
+
+
+	public void setModule(Module module) {
+		this.module = module;
 	}
 
 

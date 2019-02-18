@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,9 +32,7 @@ public class Salle {
 	@OneToOne
 	private VideoProjecteur videoProjecteur;
 	
-	@ManyToOne
-	private Technicien technicien;
-
+	
 	public String getCode() {
 		return code;
 	}
@@ -63,14 +60,6 @@ public class Salle {
 
 	public void setVideoProjecteur(VideoProjecteur videoProjecteur) {
 		this.videoProjecteur = videoProjecteur;
-	}
-
-	public Technicien getTechnicien() {
-		return technicien;
-	}
-
-	public void setTechnicien(Technicien technicien) {
-		this.technicien = technicien;
 	}
 
 

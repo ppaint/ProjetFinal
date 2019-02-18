@@ -158,15 +158,6 @@ public class Module {
 	}
 	
 
-	public Formateur getFormateur() {
-		return formateur;
-	}
-
-
-	public void setFormateur(Formateur formateur) {
-		this.formateur = formateur;
-	}
-
 
 	@Override
 	public int hashCode() {

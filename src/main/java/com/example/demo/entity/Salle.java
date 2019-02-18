@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Salle {
 	private Long cout;
 
 	@Column(name = "salle_indispo")
-	private List<Date> dates;
+	private ArrayList<Date> dates;
 	
 	//Liens et associations avec autres entités
 	@OneToOne
@@ -46,11 +47,11 @@ public class Salle {
 		this.cout = cout;
 	}
 
-	public List<Date> getDates() {
+	public ArrayList<Date> getDates() {
 		return dates;
 	}
 
-	public void setDates(List<Date> dates) {
+	public void setDates(ArrayList<Date> dates) {
 		this.dates = dates;
 	}
 

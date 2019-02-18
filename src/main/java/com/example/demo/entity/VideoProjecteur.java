@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class VideoProjecteur {
 	private Long cout;
 
 	@Column(name = "videoproj_indispo")
-	private List<Date> dates;
+	private ArrayList<Date> dates;
 	
 	
 	//Relations avec les autres entités
@@ -55,11 +56,11 @@ public class VideoProjecteur {
 		this.cout = cout;
 	}
 
-	public List<Date> getDates() {
+	public ArrayList<Date> getDates() {
 		return dates;
 	}
 
-	public void setDates(List<Date> dates) {
+	public void setDates(ArrayList<Date> dates) {
 		this.dates = dates;
 	}
 

@@ -16,15 +16,15 @@ import javax.persistence.Version;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
-@Table(name = "stagiaire")
-@SequenceGenerator(name = "seqStagiaire", sequenceName = "seq_stagiaire", allocationSize = 1, initialValue = 100)
-public abstract class Stagiaire {
+@Table(name = "technicien")
+@SequenceGenerator(name = "seqTechnicien", sequenceName = "seq_technicien", allocationSize = 1, initialValue = 100)
+public abstract class Technicien {
 	
 	// ------------------ Attributs --------------------------- //
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqStagiaire")
-	@Column(name = "stagiaire_number")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqTechnicien")
+	@Column(name = "technicien_number")
 	private Long id;
 	
 	
@@ -60,10 +60,10 @@ public abstract class Stagiaire {
 	
 	// ------------------ Constructeurs --------------------------- //
 
-	public Stagiaire() {
+	public Technicien() {
 	}
 
-	public Stagiaire(String prenom, String nom, Coordonnees coordonnees, Adresse adresse) {
+	public Technicien(String prenom, String nom, Coordonnees coordonnees, Adresse adresse) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;

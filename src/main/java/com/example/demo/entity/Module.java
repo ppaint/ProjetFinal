@@ -1,12 +1,12 @@
 package com.example.demo.entity;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 @Entity
@@ -33,6 +33,9 @@ public class Module {
 	
 	@ManyToOne
 	private Formateur formateur;
+	
+	@OneToOne
+	private Salle salle;
 	
 	@Version
 	private int version;
@@ -113,6 +116,26 @@ public class Module {
 
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
+	}
+
+
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
+	}
+
+
+	public Salle getSalle() {
+		return salle;
+	}
+
+
+	public void setSalle(Salle salle) {
+		this.salle = salle;
 	}
 
 

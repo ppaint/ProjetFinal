@@ -2,15 +2,11 @@ package com.example.demo.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -41,11 +37,8 @@ public class Ordinateur {
 	private Integer annee;
 	
 	//Relations avec d'autres entités
-	@OneToOne
+	@OneToOne(mappedBy = "ordinateur")
 	private Stagiaire stagiaire;
-	
-	@OneToOne
-	private Technicien technicien;
 	
 	
 	public Ordinateur() {
@@ -116,14 +109,6 @@ public class Ordinateur {
 
 	public void setStagiaire(Stagiaire stagiaire) {
 		this.stagiaire = stagiaire;
-	}
-
-	public Technicien getTechnicien() {
-		return technicien;
-	}
-
-	public void setTechnicien(Technicien technicien) {
-		this.technicien = technicien;
 	}
 
 	@Override

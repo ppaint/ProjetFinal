@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -49,14 +51,16 @@ public class Stagiaire {
 			@AttributeOverride(name = "codePostal", column = @Column(name = "zip_code", length = 5)),
 			@AttributeOverride(name = "ville", column = @Column(name = "city", length = 150)) })
 	private Adresse adresse;
-	
-	@Autowired
+
 	@OneToOne
 	private Ordinateur ordinateur;
 	
-	@Autowired
 	@OneToOne
 	private Login login;
+	
+	@ManyToOne
+	@JoinColumn(name="formateur")
+	private Formation formation;
 	
 	@Version
 	private int version;
@@ -142,6 +146,14 @@ public class Stagiaire {
 		this.login = login;
 	}
 
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormateur(Formation formation) {
+		this.formation = formation;
+	}
 
 	public int getVersion() {
 		return version;

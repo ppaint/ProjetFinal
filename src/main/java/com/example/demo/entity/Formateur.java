@@ -16,8 +16,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 @Table(name = "formateur")
 @SequenceGenerator(name = "seqFormateur", sequenceName = "seq_formateur", allocationSize = 1, initialValue = 100)
@@ -39,7 +37,6 @@ public class Formateur {
 	private String nom;
 	
 	
-	@Autowired
 	@Embedded
 	@Column(name = "coordonnees", length = 150)
 	private Coordonnees coordonnees;
@@ -48,7 +45,6 @@ public class Formateur {
 	private List<Module> modules;
 	
 	
-	@Autowired
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "pays", column = @Column(name = "country")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
@@ -57,7 +53,6 @@ public class Formateur {
 	private Adresse adresse;
 	
 	
-	@Autowired
 	@OneToOne
 	private Login login;
 	

@@ -18,6 +18,9 @@ import javax.persistence.Version;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "gestionnaire")
 @SequenceGenerator(name = "seqGestionnaire", sequenceName = "seq_gestionnaire", allocationSize = 1, initialValue = 100)
@@ -31,23 +34,23 @@ public class Gestionnaire {
 	private Integer id;
 	
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "first_name", length = 150, nullable = false)
 	private String prenom;
 	
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "last_name", length = 150, nullable = false)
 	private String nom;
 	
 	
-	@Autowired
 	@Embedded
 	@Column(name = "coordonnees", length = 150)
 	private Coordonnees coordonnees;
 	
-	
-	@Autowired
+	@JsonView(JsonViews.Common.class)
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "pays", column = @Column(name = "country")),
+	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "number")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "zip_code", length = 5)),
 			@AttributeOverride(name = "ville", column = @Column(name = "city", length = 150)) })
@@ -61,6 +64,7 @@ public class Gestionnaire {
 	@Version
 	private int version;
 	
+	@JsonView(JsonViews.GestionnaireWithFormation.class)
 	@OneToMany(mappedBy = "gestionnaire")
 	private Set<Formation> formations;
 	

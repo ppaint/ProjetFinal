@@ -4,7 +4,7 @@ public class JsonViews {
 	public static class Common {
 	};
 
-	public static class EleveWithOrdinateur extends Common {
+	public static class GestionnaireWithFormation extends Common {
 
 	};
 }

@@ -3,16 +3,21 @@ package com.example.demo.entity;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import org.springframework.stereotype.Component;
-@Component
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class Adresse {
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "numero", length = 200)
 	private String numero;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "rue", length = 200)
 	private String rue;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "code_postal", length = 5)
 	private String codePostal;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "ville", length = 150)
 	private String ville;
 
@@ -58,14 +63,6 @@ public class Adresse {
 
 	public void setVille(String ville) {
 		this.ville = ville;
-	}
-
-	public String getnumero() {
-		return numero;
-	}
-
-	public void setnumero(String numero) {
-		this.numero = numero;
 	}
 
 

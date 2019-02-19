@@ -5,6 +5,8 @@ public class JsonViews {
 	};
 
 	public static class GestionnaireWithFormation extends Common {
-
+	};
+	
+	public static class FormationWithModule extends Common {
 	};
 }

@@ -40,6 +40,7 @@ public class Formation {
 	private Integer duree;
 	
 	//Associations
+	@JsonView(JsonViews.FormationWithModule.class)
 	@ManyToMany
 	@JoinTable(name="modules_formation", joinColumns= {@JoinColumn(name="titre")}, inverseJoinColumns= {@JoinColumn(name="id")})
 	private Set<Module> modules;

@@ -157,7 +157,7 @@ public class Stagiaire {
 		return formation;
 	}
 
-	public void setFormateur(Formation formation) {
+	public void setFormation(Formation formation) {
 		this.formation = formation;
 	}
 

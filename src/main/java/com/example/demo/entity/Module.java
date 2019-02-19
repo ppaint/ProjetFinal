@@ -9,20 +9,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Module {
 	
 	// ------------------ Attributs --------------------------- //
 
 	@Id
+	@JsonView(JsonViews.Common.class)
 	private String titre;
-	
+	@JsonView(JsonViews.Common.class)
 	private int duree;
-	
+	@JsonView(JsonViews.Common.class)
 	private String objectif;
-	
+	@JsonView(JsonViews.Common.class)
 	private String prerequis;
-	
+	@JsonView(JsonViews.Common.class)
 	private String contenu;
 	
 	@ManyToMany(mappedBy="modules")

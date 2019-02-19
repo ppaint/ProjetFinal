@@ -121,6 +121,7 @@ public class ProjetFinalApplicationTests {
 	@Test
 	public void listFormation() {
 		Formation f = new Formation();
+		f.setId("sopra");
 		formationRepository.save(f);
 		assertNotNull(formationRepository.findAll());
 		formationRepository.delete(f);

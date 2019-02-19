@@ -119,16 +119,6 @@ public class Module {
 	}
 
 
-	public Formateur getFormateur() {
-		return formateur;
-	}
-
-
-	public void setFormateur(Formateur formateur) {
-		this.formateur = formateur;
-	}
-
-
 	public Salle getSalle() {
 		return salle;
 	}

@@ -17,6 +17,9 @@ import javax.persistence.Version;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "stagiaire")
 @SequenceGenerator(name = "seqStagiaire", sequenceName = "seq_stagiaire", allocationSize = 1, initialValue = 100)
@@ -25,15 +28,18 @@ public class Stagiaire {
 	// ------------------ Attributs --------------------------- //
 	
 	@Id
+	@JsonView(JsonViews.Common.class)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqStagiaire")
 	@Column(name = "stagiaire_number")
 	private Integer id;
 	
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "first_name", length = 150, nullable = false)
 	private String prenom;
 	
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "last_name", length = 150, nullable = false)
 	private String nom;
 	
@@ -59,7 +65,7 @@ public class Stagiaire {
 	private Login login;
 	
 	@ManyToOne
-	@JoinColumn(name="formateur")
+	@JoinColumn(name="formation")
 	private Formation formation;
 	
 	@Version

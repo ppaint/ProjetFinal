@@ -34,6 +34,7 @@ public class Formation {
 	@JoinColumn(name="gestionnaire_id")
 	private Gestionnaire gestionnaire;
 	
+	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy="formation")
 	private List<Stagiaire> stagiaires;
 	

@@ -13,11 +13,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "formation")
 public class Formation {
 	
 	@Id
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "formation_id")
 	private String id;
 	

@@ -43,9 +43,9 @@ public class GestionnaireRestController {
 
 	}
 
-	@JsonView(JsonViews.EleveWithOrdinateur.class)
-	@GetMapping("/ordinateur")
-	public List<Gestionnaire> findAllgestionnaireWithOrdinateur() {
+	@JsonView(JsonViews.GestionnaireWithFormation.class)
+	@GetMapping("/formation")
+	public List<Gestionnaire> findAllGestionnaireWithFormation() {
 		return gestionnaireRepository.findAll();
 	}
 

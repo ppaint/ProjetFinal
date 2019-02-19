@@ -8,14 +8,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Embeddable
 public class Adresse {
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "numero", length = 200)
 	private String numero;
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "rue", length = 200)
 	private String rue;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "code_postal", length = 5)
 	private String codePostal;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "ville", length = 150)
 	private String ville;
 

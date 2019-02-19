@@ -64,6 +64,7 @@ public class Gestionnaire {
 	@Version
 	private int version;
 	
+	@JsonView(JsonViews.GestionnaireWithFormation.class)
 	@OneToMany(mappedBy = "gestionnaire")
 	private Set<Formation> formations;
 	

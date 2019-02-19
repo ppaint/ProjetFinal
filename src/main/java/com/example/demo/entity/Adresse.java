@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import com.example.demo.entity.jsonview.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
 
-@Embeddable
+@Embeddable // Classe appelé en tant qu'Objet (attribut d'une autre classe)
 public class Adresse {
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "numero", length = 200)

@@ -24,7 +24,7 @@ public class Salle {
 	private ArrayList<Date> dates;
 	
 	//Liens et associations avec autres entités
-	@OneToOne
+	@OneToOne(mappedBy="salle")
 	private VideoProjecteur videoProjecteur;
 	
 	@OneToOne(mappedBy = "salle")

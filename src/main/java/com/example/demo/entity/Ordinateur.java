@@ -5,39 +5,50 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "ordinateur")
 public class Ordinateur {
 	//Attributs généraux
 	@Id
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "ordinateur_code")
 	private String code;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="ordinateur_cout")
 	private Long cout;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="ordinateur_indispo")
 	private ArrayList<Date> dates;
 		
 	//Attributs propres à Ordinateur
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "processeur")
 	private String processeur;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "ram")
 	private Integer ram;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "disque_dur")
 	private Integer dd;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "annee")
 	private Integer annee;
 	
 	//Relations avec d'autres entités
-	@OneToOne(mappedBy = "ordinateur")
+	@OneToOne(mappedBy = "ordinateur", fetch = FetchType.LAZY)
 	private Stagiaire stagiaire;
 	
 	

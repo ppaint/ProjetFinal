@@ -5,8 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,11 +27,9 @@ public class VideoProjecteur {
 	
 	
 	//Relations avec les autres entités
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private Salle salle;
 	
-	@ManyToOne
-	private Technicien technicien;
 	
 	public VideoProjecteur() {
 		super();
@@ -70,13 +68,6 @@ public class VideoProjecteur {
 		this.salle = salle;
 	}
 
-	public Technicien getTechnicien() {
-		return technicien;
-	}
-
-	public void setTechnicien(Technicien technicien) {
-		this.technicien = technicien;
-	}
 
 	@Override
 	public int hashCode() {

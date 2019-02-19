@@ -43,7 +43,7 @@ public class FormationRestController {
 
 	}
 
-	@JsonView(JsonViews.FormationWithModule.class)
+	@JsonView(JsonViews.Module.class)
 	@GetMapping("/module")
 	public ResponseEntity<List<Formation>> findAllFormationWithModule() {
 		return new ResponseEntity<List<Formation>>(formationRepository.findAll(), HttpStatus.OK);

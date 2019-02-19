@@ -5,6 +5,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,8 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.entity.jsonview.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -43,14 +42,12 @@ public class Stagiaire {
 	@Column(name = "last_name", length = 150, nullable = false)
 	private String nom;
 	
-	
-	@Autowired
+
 	@Embedded
 	@Column(name = "coordonnees", length = 150)
 	private Coordonnees coordonnees;
+
 	
-	
-	@Autowired
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "number")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
@@ -58,13 +55,14 @@ public class Stagiaire {
 			@AttributeOverride(name = "ville", column = @Column(name = "city", length = 150)) })
 	private Adresse adresse;
 
-	@OneToOne
+	@JsonView(JsonViews.Common.class)
+	@OneToOne(fetch = FetchType.LAZY)
 	private Ordinateur ordinateur;
 	
 	@OneToOne
 	private Login login;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="formation")
 	private Formation formation;
 	

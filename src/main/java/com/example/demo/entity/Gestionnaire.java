@@ -7,6 +7,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,8 +16,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.entity.jsonview.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -57,16 +56,15 @@ public class Gestionnaire {
 			@AttributeOverride(name = "ville", column = @Column(name = "city", length = 150)) })
 	private Adresse adresse;
 	
-	
-	@Autowired
+
 	@OneToOne
 	private Login login;
 	
 	@Version
 	private int version;
 	
-	@JsonView(JsonViews.GestionnaireWithFormation.class)
-	@OneToMany(mappedBy = "gestionnaire")
+	@JsonView(JsonViews.Formation.class)
+	@OneToMany(mappedBy = "gestionnaire", fetch = FetchType.LAZY)
 	private Set<Formation> formations;
 	
 	// ------------------ Constructeurs --------------------------- //

@@ -8,6 +8,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +44,7 @@ public class Formateur {
 	@Column(name = "coordonnees", length = 150)
 	private Coordonnees coordonnees;
 	
-	@OneToMany(mappedBy = "formateur")
+	@OneToMany(mappedBy = "formateur", fetch = FetchType.LAZY)
 	private List<Module> modules;
 	
 	
@@ -58,7 +59,7 @@ public class Formateur {
 	@OneToOne
 	private Login login;
 	
-	@ManyToMany(mappedBy="formateurs")
+	@ManyToMany(mappedBy="formateurs", fetch = FetchType.LAZY)
 	private Set<Matiere> matieres;
 	
 	@Version

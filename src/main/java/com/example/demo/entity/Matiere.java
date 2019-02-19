@@ -4,10 +4,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Matiere {
@@ -18,11 +20,10 @@ public class Matiere {
 
 	// associations
 
-	@ManyToMany
-	@JoinTable(name="modules_matieres", joinColumns= {@JoinColumn(name="titre")}, inverseJoinColumns= {@JoinColumn(name="nomMatiere")})
+	@OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
 	private Set<Module> modules;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="formateurs_matieres", joinColumns= {@JoinColumn(name="id")}, inverseJoinColumns= {@JoinColumn(name="nomMatiere")})
 		private Set<Formateur> formateurs;
 

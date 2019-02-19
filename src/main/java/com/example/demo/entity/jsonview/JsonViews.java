@@ -4,9 +4,15 @@ public class JsonViews {
 	public static class Common {
 	};
 
-	public static class GestionnaireWithFormation extends Common {
+	public static class Formation extends Common {
 	};
 	
-	public static class FormationWithModule extends Common {
+	public static class Module extends Formation {
+	};
+	
+	public static class Matiere extends Formateur {
+	};
+	
+	public static class Formateur extends Module {
 	};
 }

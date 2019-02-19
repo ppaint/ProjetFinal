@@ -3,7 +3,9 @@ package com.example.demo.entity;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -29,16 +31,22 @@ public class Module {
 	@JsonView(JsonViews.Common.class)
 	private String contenu;
 	
-	@ManyToMany(mappedBy="modules")
-	private Set<Matiere> matieres;
+	@JsonView(JsonViews.Matiere.class)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "matiere")
+	private Matiere matiere;
 	
-	@ManyToMany(mappedBy="modules")
+	@ManyToMany(mappedBy="modules", fetch = FetchType.LAZY)
 	private Set<Formation> formations;
 	
-	@ManyToOne
+	@JsonView(JsonViews.Formateur.class)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "formateur")
 	private Formateur formateur;
 	
-	@OneToOne
+	@JsonView(JsonViews.Common.class)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "salle")
 	private Salle salle;
 	
 	@Version
@@ -75,6 +83,16 @@ public class Module {
 
 	public void setFormations(Set<Formation> formations) {
 		this.formations = formations;
+	}
+
+
+	public Formateur getFormateur() {
+		return formateur;
+	}
+
+
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
 	}
 
 
@@ -142,13 +160,13 @@ public class Module {
 		this.version = version;
 	}
 	
-	public Set<Matiere> getMatieres() {
-		return matieres;
+	public Matiere getMatiere() {
+		return matiere;
 	}
 
 
-	public void setMatieres(Set<Matiere> matieres) {
-		this.matieres = matieres;
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
 	}
 	
 

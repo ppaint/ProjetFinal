@@ -1,9 +1,6 @@
 package com.example.demo;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +26,6 @@ import com.example.demo.repository.SalleRepository;
 import com.example.demo.repository.StagiaireRepository;
 import com.example.demo.repository.TechnicienRepository;
 import com.example.demo.repository.VideoProjecteurRepository;
-import com.example.demo.service.FormationService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,8 +47,6 @@ public class ProjetFinalApplicationTests {
 	private VideoProjecteurRepository videoProjecteurRepository;
 	@Autowired
 	private FormationRepository formationRepository;
-	@Autowired
-	private FormationService formationService;
 
 	
 	
@@ -127,18 +121,10 @@ public class ProjetFinalApplicationTests {
 	@Test
 	public void listFormation() {
 		Formation f = new Formation();
-		f.setId("sopra");
+		f.setId("sopra2");
 		formationRepository.save(f);
 		assertNotNull(formationRepository.findAll());
 		formationRepository.delete(f);
 	}
 	
-	@Test
-	public void deleteFormation() {
-		Optional<Formation> opt = formationRepository.findByIdWithStagiaire("Emeraude");
-		if(opt.get()!= null) {
-			formationService.delete(opt.get());
-		}
-		assertNull(formationRepository.findById("Emeraude").get());
-	}
 }

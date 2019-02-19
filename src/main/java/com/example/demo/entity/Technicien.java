@@ -41,8 +41,7 @@ public class Technicien {
 	@Column(name = "coordonnees", length = 150)
 	private Coordonnees coordonnees;
 	
-	
-	@Autowired
+
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "number")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
@@ -51,7 +50,6 @@ public class Technicien {
 	private Adresse adresse;
 	
 	
-	@Autowired
 	@OneToOne
 	private Login login;
 	

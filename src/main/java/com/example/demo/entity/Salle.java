@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,19 +23,17 @@ public class Salle {
 
 	@Column(name = "salle_indispo")
 	private ArrayList<Date> dates;
-	
-	//Liens et associations avec autres entités
-	@OneToOne(mappedBy="salle")
+
+	// Liens et associations avec autres entités
+	@OneToOne(mappedBy = "salle", fetch = FetchType.LAZY)
 	private VideoProjecteur videoProjecteur;
-	
-	@OneToOne(mappedBy = "salle")
+
+	@OneToOne(mappedBy = "salle", fetch = FetchType.LAZY)
 	private Module module;
-	
-	
+
 	public String getCode() {
 		return code;
 	}
-
 
 	public Long getCout() {
 		return cout;
@@ -43,7 +42,6 @@ public class Salle {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 
 	public void setCout(Long cout) {
 		this.cout = cout;
@@ -65,16 +63,13 @@ public class Salle {
 		this.videoProjecteur = videoProjecteur;
 	}
 
-
 	public Module getModule() {
 		return module;
 	}
 
-
 	public void setModule(Module module) {
 		this.module = module;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -83,7 +78,6 @@ public class Salle {
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -101,7 +95,5 @@ public class Salle {
 			return false;
 		return true;
 	}
-	
-	
 
 }

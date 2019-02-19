@@ -29,6 +29,7 @@ public class Gestionnaire {
 	// ------------------ Attributs --------------------------- //
 	
 	@Id
+	@JsonView(JsonViews.Common.class)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGestionnaire")
 	@Column(name = "gestionnaire_number")
 	private Integer id;

@@ -52,8 +52,6 @@ public class Formation {
 		this.modules = modules;
 	}
 
-
-<<<<<<< HEAD
 	public Gestionnaire getGestionnaire() {
 		return gestionnaire;
 	}
@@ -63,9 +61,6 @@ public class Formation {
 		this.gestionnaire = gestionnaire;
 	}
 
-
-=======
->>>>>>> a3ce35422c3224ce310430bb946c9dec8c8511bf
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,11 +86,7 @@ public class Formation {
 			return false;
 		return true;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> a3ce35422c3224ce310430bb946c9dec8c8511bf
-	
+
 	
 
 }

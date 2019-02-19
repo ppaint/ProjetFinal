@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -10,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -56,8 +60,13 @@ public class Formateur {
 	@OneToOne
 	private Login login;
 	
+	@ManyToMany(mappedBy="formateurs")
+	private Set<Matiere> matieres;
+	
 	@Version
 	private int version;
+	
+	
 	
 	// ------------------ Constructeurs --------------------------- //
 
@@ -81,6 +90,22 @@ public class Formateur {
 		return id;
 	}
 
+
+	public List<Module> getModules() {
+		return modules;
+	}
+
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
+	}
+
+	public Set<Matiere> getMatieres() {
+		return matieres;
+	}
+
+	public void setMatieres(Set<Matiere> matieres) {
+		this.matieres = matieres;
+	}
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -141,6 +166,32 @@ public class Formateur {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Formateur other = (Formateur) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+	
 }
 
 	

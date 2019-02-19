@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.example.demo.entity.jsonview.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -24,6 +29,15 @@ public class Formation {
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "formation_id")
 	private String id;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonView(JsonViews.Common.class)
+	private Date dateDebut;
+	
+	
+	@JsonView(JsonViews.Common.class)
+	private Integer duree;
 	
 	//Associations
 	@ManyToMany
@@ -50,6 +64,26 @@ public class Formation {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+
+	public Integer getDuree() {
+		return duree;
+	}
+
+
+	public void setDuree(Integer duree) {
+		this.duree = duree;
 	}
 
 

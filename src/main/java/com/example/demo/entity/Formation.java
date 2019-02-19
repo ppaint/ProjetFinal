@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +29,9 @@ public class Formation {
 	@ManyToOne
 	@JoinColumn(name="gestionnaire_id")
 	private Gestionnaire gestionnaire;
+	
+	@OneToMany(mappedBy="formation")
+	private List<Stagiaire> stagiaires;
 	
 	public Formation() {
 		super();
@@ -60,6 +65,16 @@ public class Formation {
 	public void setGestionnaire(Gestionnaire gestionnaire) {
 		this.gestionnaire = gestionnaire;
 	}
+
+	public List<Stagiaire> getStagiaires() {
+		return stagiaires;
+	}
+
+
+	public void setStagiaires(List<Stagiaire> stagiaires) {
+		this.stagiaires = stagiaires;
+	}
+
 
 	@Override
 	public int hashCode() {

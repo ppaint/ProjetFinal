@@ -46,7 +46,7 @@ public class Stagiaire {
 	
 	@Autowired
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "pays", column = @Column(name = "country")),
+	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "number")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "zip_code", length = 5)),
 			@AttributeOverride(name = "ville", column = @Column(name = "city", length = 150)) })

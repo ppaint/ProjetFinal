@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import org.springframework.stereotype.Component;
-@Component
+
 @Embeddable
 public class Coordonnees {
 	@Column(name = "numero_telephone", length = 200)

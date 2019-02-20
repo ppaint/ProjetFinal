@@ -3,14 +3,18 @@ package com.example.demo.entity;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import org.springframework.stereotype.Component;
+import com.example.demo.entity.jsonview.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Embeddable
 public class Coordonnees {
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "numero_telephone", length = 200)
 	private String tel;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "fax", length = 200)
 	private String fax;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "adresse_mail", length = 5)
 	private String mail;
 

@@ -44,11 +44,13 @@ public class Stagiaire {
 	
 
 	@Embedded
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "coordonnees", length = 150)
 	private Coordonnees coordonnees;
 
 	
 	@Embedded
+	@JsonView(JsonViews.Common.class)
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "number")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "zip_code", length = 5)),

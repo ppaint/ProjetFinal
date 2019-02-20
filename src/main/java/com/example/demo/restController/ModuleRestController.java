@@ -43,6 +43,18 @@ public class ModuleRestController {
 	public ResponseEntity<List<Module>> findAllModule() {
 		return new ResponseEntity<List<Module>>(moduleRepository.findAll(), HttpStatus.OK);
 	}
+	
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/{titre}")
+	public ResponseEntity<Module> findById(@PathVariable(name = "titre") String titre) {
+		Optional<Module> opt = moduleRepository.findById(titre);
+		if (opt.isPresent()) {
+			return new ResponseEntity<Module>(opt.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+	}
 
 	@JsonView(JsonViews.Formateur.class)
 	@GetMapping("/formateur")

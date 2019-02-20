@@ -7,7 +7,7 @@ public class JsonViews {
 	public static class Formation extends Common {
 	};
 	
-	public static class Module extends Formation {
+	public static class Module extends Common {
 	};
 	
 	public static class Matiere extends Formateur {
@@ -15,4 +15,9 @@ public class JsonViews {
 	
 	public static class Formateur extends Module {
 	};
+	
+	public static class Stagiaire extends Common {
+	};
+	
+	
 }

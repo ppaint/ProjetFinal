@@ -51,7 +51,7 @@ public class Formation {
 	@JoinColumn(name = "gestionnaire_id")
 	private Gestionnaire gestionnaire;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Module.class)
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<Stagiaire> stagiaires;
 

@@ -24,6 +24,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.example.demo.entity.Stagiaire;
 import com.example.demo.entity.jsonview.JsonViews;
 import com.example.demo.repository.StagiaireRepository;
+import com.example.demo.service.StagiaireService;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @CrossOrigin(origins="*")
@@ -34,7 +35,10 @@ public class StagiaireRestController {
 	@Autowired
 	private StagiaireRepository stagiaireRepository;
 	
-	@JsonView(JsonViews.Common.class)
+	@Autowired
+	private StagiaireService stagiaireService;
+	
+	@JsonView(JsonViews.Formation.class)
 	@GetMapping(value = { "", "/" })
 	public ResponseEntity<List<Stagiaire>> findAllGestionnaire() {
 		return new ResponseEntity<List<Stagiaire>>(stagiaireRepository.findAll(), HttpStatus.OK);
@@ -51,6 +55,17 @@ public class StagiaireRestController {
 		}
 
 	}
+//	@JsonView(JsonViews.Common.class)
+//	@GetMapping("/{id}/formation")
+//	public ResponseEntity<Fro> findStagiaireWithFormation(@PathVariable(name = "id") Integer id) {
+//		Optional<Formation> opt = stagiaireRepository.findById(id).getFormation();
+//		if (opt.isPresent()) {
+//			return new ResponseEntity<Stagiaire>(opt.get(), HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//		}
+//
+//	}
 	
 	@PostMapping(value = { "", "/" })
 	public ResponseEntity<Void> insertStagiaire(@RequestBody Stagiaire stagiaire, BindingResult br, UriComponentsBuilder uCB) {
@@ -70,7 +85,7 @@ public class StagiaireRestController {
 		stagiaireRepository.deleteById(id);
 	}
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Formation.class)
 	@PutMapping(value = { "", "/" })
 	public Stagiaire update(@Valid @RequestBody Stagiaire stagiaire, BindingResult br) {
 		if (br.hasErrors()) {
@@ -80,7 +95,7 @@ public class StagiaireRestController {
 			if (opt.isPresent()) {
 				Stagiaire stagiaireEnBase = opt.get();
 				stagiaire.setVersion(stagiaireEnBase.getVersion());
-				return stagiaireRepository.save(stagiaire);
+				return stagiaireService.save(stagiaire);
 			} else {
 				return null;
 			}

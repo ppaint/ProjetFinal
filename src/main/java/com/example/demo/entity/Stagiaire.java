@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -65,6 +66,7 @@ public class Stagiaire {
 	@OneToOne
 	private Login login;
 	
+	@JsonView(JsonViews.Formation.class)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="formation")
 	private Formation formation;

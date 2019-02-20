@@ -39,13 +39,13 @@ public class FormationRestController {
 	@Autowired
 	private FormationService formationService;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Module.class)
 	@GetMapping(value = { "", "/" })
 	public ResponseEntity<List<Formation>> findAllFormation() {
 		return new ResponseEntity<List<Formation>>(formationRepository.findAll(), HttpStatus.OK);
 	}
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Module.class)
 	@GetMapping("/{id}")
 	public ResponseEntity<Formation> findById(@PathVariable(name = "id") String id) {
 		Optional<Formation> opt = formationRepository.findById(id);

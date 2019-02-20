@@ -44,7 +44,7 @@ public class FormationRestController {
 	}
 	
 	@JsonView(JsonViews.Module.class)
-	@GetMapping("/{id}")
+	@GetMapping("/{id}/module")
 	public ResponseEntity<Formation> findByIdWithModule(@PathVariable(name = "id") String id) {
 		Optional<Formation> opt = formationRepository.findById(id);
 		if (opt.isPresent()) {

@@ -29,7 +29,7 @@ public class FormationService {
 	public void deleteById(String id) {
 
 		if (formationRepository.findById(id).isPresent()) {
-			if (formationRepository.findById(id).get().getStagiaires() != null) {
+			if (!formationRepository.findById(id).get().getStagiaires().isEmpty()) {
 				for (Stagiaire s : formationRepository.findById(id).get().getStagiaires()) {
 					s.setFormation(null);
 					stagiaireRepository.save(s);

@@ -42,6 +42,18 @@ public class FormationRestController {
 		}
 
 	}
+	
+	@JsonView(JsonViews.Module.class)
+	@GetMapping("/{id}")
+	public ResponseEntity<Formation> findByIdWithModule(@PathVariable(name = "id") String id) {
+		Optional<Formation> opt = formationRepository.findById(id);
+		if (opt.isPresent()) {
+			return new ResponseEntity<Formation>(opt.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+	}
 
 	@JsonView(JsonViews.Module.class)
 	@GetMapping("/module")

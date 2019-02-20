@@ -59,6 +59,7 @@ public class Stagiaire {
 
 	@JsonView(JsonViews.Common.class)
 	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ordinateur")
 	private Ordinateur ordinateur;
 	
 	@OneToOne

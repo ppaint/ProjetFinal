@@ -93,7 +93,7 @@ public class FormationRestController {
 		formationService.deleteById(id);
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Module.class)
 	@PutMapping(value = { "", "/" })
 	public Formation update(@Valid @RequestBody Formation formation, BindingResult br) {
 		if (br.hasErrors()) {
@@ -103,7 +103,7 @@ public class FormationRestController {
 			if (opt.isPresent()) {
 				Formation formationEnBase = opt.get();
 				formation.setVersion(formationEnBase.getVersion());
-				return formationRepository.save(formation);
+				return formationService.save(formation);
 			} else {
 				return null;
 			}

@@ -13,4 +13,10 @@ public interface FormationRepository extends JpaRepository<Formation, String>{
 	
 	@Query("select f from Formation f left join fetch f.stagiaires s where f.id = ?1")
 	public Optional<Formation> findByIdWithStagiaire(String id);
+	
+
+	@Query("select f from Formation f left join fetch f.modules s where f.id = ?1")
+	public Optional<Formation> findByIdWithModules(String id);
+	
+	
 }

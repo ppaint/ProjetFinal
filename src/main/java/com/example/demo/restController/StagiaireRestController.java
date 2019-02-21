@@ -72,7 +72,7 @@ public class StagiaireRestController {
 		if (br.hasErrors()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} else {
-			stagiaire = stagiaireRepository.save(stagiaire);
+			stagiaire = stagiaireService.save(stagiaire);
 			HttpHeaders header = new HttpHeaders();
 			header.setLocation(uCB.path("/rest/stagiaire/{id}").buildAndExpand(stagiaire.getId()).toUri());
 			return new ResponseEntity<>(header, HttpStatus.CREATED);

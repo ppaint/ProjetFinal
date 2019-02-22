@@ -123,7 +123,7 @@ public class ProjetFinalApplicationTests {
 	
 	@Test
 	public void testQuery() {
-		moduleService.deleteOfFormation("sopra", moduleRepository.findById("SQL").get());
+		moduleService.deleteOfFormation("sopra", "SQL");
 	}
 	
 }

@@ -39,11 +39,11 @@ public class ModuleService {
 		}
 	}
 
-	public void deleteOfFormation(String IdFormation, Module module) {
+	public void deleteOfFormation(String IdFormation, String titreModule) {
 		if (formationRepository.findByIdWithModules(IdFormation).isPresent()) {
 			if (formationRepository.findByIdWithModules(IdFormation).get().getModules() != null) {
 				Formation formationEnBase = formationRepository.findByIdWithModules(IdFormation).get();
-				formationEnBase.getModules().remove(module);
+				formationEnBase.getModules().remove(moduleRepository.findById(titreModule).get());
 				formationEnBase = formationRepository.save(formationEnBase);
 			}
 		}		

@@ -87,9 +87,9 @@ public class ModuleRestController {
 		moduleService.deleteById(titre);
 	}
 	
-	@DeleteMapping("/formation/{titre}")
-	public void deleteOfFormation(@RequestBody Module module, @PathVariable(name = "titre") String IdFormation) {
-		moduleService.deleteOfFormation(IdFormation, module);
+	@DeleteMapping("/formation/{titre}/{titreModule}")
+	public void deleteOfFormation(@PathVariable(name = "titre") String IdFormation, @PathVariable(name = "titreModule") String titreModule) {
+		moduleService.deleteOfFormation(IdFormation, titreModule);
 	}
 
 	@JsonView(JsonViews.Matiere.class)

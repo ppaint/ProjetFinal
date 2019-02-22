@@ -51,6 +51,7 @@ public class FormationService {
 				m.setVersion(moduleEnBase.getVersion());
 				m = moduleRepository.save(m);
 			}
+			formationRepository.save(formation);
 		}
 		return formation;
 	}

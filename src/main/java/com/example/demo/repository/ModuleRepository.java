@@ -14,4 +14,5 @@ public interface ModuleRepository extends JpaRepository<Module, String>{
 	@Query("select m from Module m left join fetch m.formations where m.titre = ?1")
 	public Optional<Module> findByIdWithFormations(String id);
 
+
 }
